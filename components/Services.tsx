@@ -28,7 +28,7 @@ export default function Services() {
 
               <ul aria-label={`Cakupan ${service.name}`} className="mt-4 flex flex-wrap gap-2">
                 {service.scopes.map((scope) => (
-                  <li key={scope.type} className="rounded-full bg-brand-light px-3 py-1 text-sm font-medium text-brand">
+                  <li key={scope.type} className="rounded-lg bg-brand-light px-3.5 py-2 text-sm font-medium leading-snug text-brand">
                     {scope.type}: {scope.note}
                   </li>
                 ))}
