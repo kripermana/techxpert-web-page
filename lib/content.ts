@@ -156,15 +156,15 @@ export const FAQS: { question: string; answer: string }[] = [
   {
     question: "Berapa lama pengerjaan sebuah website?",
     answer:
-      "Kami menentukan durasi pengerjaan setelah konsultasi kebutuhan, karena lingkup tiap website berbeda. [ISI SESUAI KEBIJAKAN]",
+      "Kami menentukan durasi pengerjaan setelah konsultasi kebutuhan, karena lingkup tiap website berbeda.",
   },
   {
     question: "Apakah ada garansi untuk pekerjaan TechXpert?",
-    answer: "[ISI SESUAI KEBIJAKAN]",
+    answer: "Garansi berlaku sesuai dengan kesepakatan kerja sama atau tender.",
   },
   {
     question: "Apakah tersedia SLA untuk Managed Service?",
-    answer: "[ISI SESUAI KEBIJAKAN]",
+    answer: "SLA tersedia melalui ketentuan dan kebijakan proyek yang dikerjakan.",
   },
   {
     question: "Wilayah mana yang TechXpert layani secara onsite?",
@@ -173,7 +173,7 @@ export const FAQS: { question: string; answer: string }[] = [
   },
   {
     question: "Bagaimana sistem pembayarannya?",
-    answer: "[ISI SESUAI KEBIJAKAN]",
+    answer: "Sistem pembayaran ditentukan berdasarkan ketentuan proyek.",
   },
 ];
 
@@ -181,7 +181,7 @@ export const FAQS: { question: string; answer: string }[] = [
 // Bagian Portofolio masih berisi slot kosong. Untuk menyembunyikannya sampai data tersedia,
 // ubah SHOW_PORTFOLIO menjadi false. Komponen <Portfolio /> tidak akan dirender sama sekali.
 // Setelah data ada, isi CLIENT_LOGOS dan CASE_STUDIES di bawah lalu ubah kembali menjadi true.
-export const SHOW_PORTFOLIO = true;
+export const SHOW_PORTFOLIO = false;
 
 export const CLIENT_LOGOS: { name: string; src: string }[] = [
   { name: "[DATA BELUM DIISI]", src: "/images/placeholder-logo.svg" },
