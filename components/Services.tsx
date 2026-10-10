@@ -34,11 +34,11 @@ export default function Services() {
                 ))}
               </ul>
 
-              <div className="mt-auto pt-5">
-                <p className="text-sm font-semibold text-ink/80">Contoh pekerjaan</p>
+              {/* <div className="mt-auto pt-5"> */}
+                {/* <p className="text-sm font-semibold text-ink/80">Contoh pekerjaan</p> */}
                 {/* Ganti placeholder ini dengan proyek nyata. Jangan isi dengan contoh rekaan. */}
-                <p className="placeholder-tag mt-2">[CONTOH PROYEK BELUM DIISI]</p>
-              </div>
+                {/* <p className="placeholder-tag mt-2">[CONTOH PROYEK BELUM DIISI]</p> */}
+              {/* </div> */}
             </li>
           ))}
         </ul>
