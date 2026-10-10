@@ -5,22 +5,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Warna utama brand
-        navy: {
-          DEFAULT: "#0B2545",
-          900: "#071A31",
-          800: "#0B2545",
-          700: "#13345E",
-          600: "#1D4677",
-          100: "#E3EAF3",
-          50: "#F2F5F9",
+        // Warna brand. Merah hanya untuk aksen: tombol, link, ikon, label, dan fokus.
+        brand: {
+          DEFAULT: "#A3021C",
+          dark: "#7F0116",
+          light: "#FBEAEC",
         },
-        // Warna aksen: hanya dipakai sebagai latar tombol (teks navy) atau teks di atas latar navy.
-        accent: {
-          DEFAULT: "#F4B942",
-          600: "#E0A22A",
-          100: "#FDF1D8",
-        },
+        // Warna teks utama (charcoal)
+        ink: "#1A1A1A",
+        // Latar abu sangat muda untuk section berselang-seling
+        surface: "#F7F7F7",
       },
       fontFamily: {
         sans: ["var(--font-jakarta)", "ui-sans-serif", "system-ui", "sans-serif"],

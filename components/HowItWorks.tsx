@@ -25,10 +25,10 @@ export default function HowItWorks() {
     <section id="cara-kerja" aria-labelledby="cara-kerja-judul" className="py-16 sm:py-20">
       <div className="container-page">
         <p className="eyebrow">Cara Kerja</p>
-        <h2 id="cara-kerja-judul" className="mt-2 text-2xl font-bold text-navy sm:text-3xl">
+        <h2 id="cara-kerja-judul" className="mt-2 text-2xl font-bold text-ink sm:text-3xl">
           Alur kerja kami dari konsultasi sampai pendampingan
         </h2>
-        <p className="mt-3 max-w-2xl text-slate-700">
+        <p className="mt-3 max-w-2xl text-ink/80">
           Kami memakai dua alur yang berbeda karena proyek software dan proyek infrastruktur membutuhkan langkah yang
           berbeda. Pilih alur yang sesuai dengan kebutuhan Anda.
         </p>
@@ -52,8 +52,8 @@ export default function HowItWorks() {
                 onKeyDown={onKeyDown}
                 className={`min-h-[44px] rounded-md border-2 px-4 py-2 text-left font-semibold transition-colors ${
                   selected
-                    ? "border-navy bg-navy text-white"
-                    : "border-slate-300 bg-white text-navy hover:border-navy"
+                    ? "border-brand bg-brand-light text-brand"
+                    : "border-ink/60 bg-white text-ink hover:border-brand-dark"
                 }`}
               >
                 {flow.label}
@@ -72,22 +72,22 @@ export default function HowItWorks() {
             tabIndex={0}
             className="mt-8"
           >
-            <p className="text-slate-700">{flow.intro}</p>
+            <p className="text-ink/80">{flow.intro}</p>
             <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {flow.steps.map((step, n) => (
-                <li key={step.title} className="flex gap-4 rounded-lg border border-slate-200 bg-white p-5">
+                <li key={step.title} className="flex gap-4 rounded-lg border border-ink/10 bg-white p-5">
                   <span
                     aria-hidden="true"
-                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent font-bold text-navy"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand font-bold text-white"
                   >
                     {n + 1}
                   </span>
                   <div>
-                    <h3 className="font-semibold text-navy">
+                    <h3 className="font-semibold text-ink">
                       <span className="sr-only">Langkah {n + 1}: </span>
                       {step.title}
                     </h3>
-                    <p className="mt-1 text-sm text-slate-700">{step.description}</p>
+                    <p className="mt-1 text-sm text-ink/80">{step.description}</p>
                   </div>
                 </li>
               ))}

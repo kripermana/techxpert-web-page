@@ -16,18 +16,14 @@
   }
 
   body {
-    @apply bg-white text-slate-800 antialiased;
+    @apply bg-white text-ink antialiased;
   }
 
-  /* Fokus keyboard yang selalu terlihat: navy di latar terang, aksen di latar gelap */
+  /* Fokus keyboard yang selalu terlihat di semua elemen interaktif */
   :focus-visible {
-    outline: 3px solid #0b2545;
-    outline-offset: 3px;
+    outline: 2px solid theme("colors.brand.DEFAULT");
+    outline-offset: 2px;
     border-radius: 4px;
-  }
-
-  .on-dark :focus-visible {
-    outline-color: #f4b942;
   }
 }
 
@@ -40,23 +36,26 @@
     @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md px-5 py-2.5 text-base font-semibold transition-colors;
   }
 
+  /* Tombol utama: latar brand, teks putih, hover brand-dark */
   .btn-primary {
-    @apply btn bg-accent text-navy hover:bg-accent-600;
+    @apply btn bg-brand text-white hover:bg-brand-dark;
   }
 
-  .btn-outline-light {
-    @apply btn border-2 border-white/80 text-white hover:bg-white hover:text-navy;
+  /* Tombol sekunder: garis brand di atas latar terang */
+  .btn-outline {
+    @apply btn border-2 border-brand bg-white text-brand hover:border-brand-dark hover:bg-brand-light hover:text-brand-dark;
   }
 
-  .btn-navy {
-    @apply btn bg-navy text-white hover:bg-navy-700;
+  /* Link teks: brand, hover brand-dark dengan garis bawah */
+  .link {
+    @apply text-brand underline-offset-4 hover:text-brand-dark hover:underline;
   }
 
   .eyebrow {
-    @apply text-sm font-semibold uppercase tracking-wider text-navy-600;
+    @apply text-sm font-semibold uppercase tracking-wider text-brand;
   }
 
   .placeholder-tag {
-    @apply inline-block rounded border border-dashed border-slate-400 bg-slate-50 px-2 py-1 text-sm font-medium text-slate-700;
+    @apply inline-block rounded border border-dashed border-ink/60 bg-surface px-2 py-1 text-sm font-medium text-ink/80;
   }
 }

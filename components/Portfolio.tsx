@@ -10,11 +10,11 @@ export default function Portfolio() {
     <section id="portofolio" aria-labelledby="portofolio-judul" className="py-16 sm:py-20">
       <div className="container-page">
         <p className="eyebrow">Portofolio</p>
-        <h2 id="portofolio-judul" className="mt-2 text-2xl font-bold text-navy sm:text-3xl">
+        <h2 id="portofolio-judul" className="mt-2 text-2xl font-bold text-ink sm:text-3xl">
           Klien dan proyek kami
         </h2>
 
-        <h3 className="mt-10 text-lg font-semibold text-navy">Klien</h3>
+        <h3 className="mt-10 text-lg font-semibold text-ink">Klien</h3>
         <ul className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
           {CLIENT_LOGOS.map((logo, i) => (
             <li key={i} className="flex items-center justify-center">
@@ -23,10 +23,10 @@ export default function Portfolio() {
           ))}
         </ul>
 
-        <h3 className="mt-12 text-lg font-semibold text-navy">Studi kasus</h3>
+        <h3 className="mt-12 text-lg font-semibold text-ink">Studi kasus</h3>
         <ul className="mt-4 grid gap-6 md:grid-cols-2">
           {CASE_STUDIES.map((item, i) => (
-            <li key={i} className="overflow-hidden rounded-lg border border-slate-200 bg-white">
+            <li key={i} className="overflow-hidden rounded-lg border border-ink/10 bg-white">
               <Image
                 src={item.image}
                 alt={`Foto studi kasus: ${item.title}`}
@@ -35,8 +35,8 @@ export default function Portfolio() {
                 className="h-auto w-full"
               />
               <div className="p-5">
-                <h4 className="text-lg font-semibold text-navy">{item.title}</h4>
-                <dl className="mt-3 space-y-1 text-sm text-slate-700">
+                <h4 className="text-lg font-semibold text-ink">{item.title}</h4>
+                <dl className="mt-3 space-y-1 text-sm text-ink/80">
                   <div className="flex gap-2">
                     <dt className="font-semibold">Klien:</dt>
                     <dd>{item.client}</dd>
@@ -46,7 +46,7 @@ export default function Portfolio() {
                     <dd>{item.service}</dd>
                   </div>
                 </dl>
-                <p className="mt-3 text-slate-700">{item.summary}</p>
+                <p className="mt-3 text-ink/80">{item.summary}</p>
               </div>
             </li>
           ))}

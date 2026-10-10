@@ -71,7 +71,7 @@ function buildMailto(v: FormValues): string {
 }
 
 const inputBase =
-  "mt-1 block min-h-[44px] w-full rounded-md border bg-white px-3 py-2 text-base text-slate-900 placeholder:text-slate-500";
+  "mt-1 block min-h-[44px] w-full rounded-md border bg-white px-3 py-2 text-base text-ink placeholder:text-ink/60";
 
 export default function ContactForm() {
   const [values, setValues] = useState<FormValues>(INITIAL);
@@ -115,13 +115,13 @@ export default function ContactForm() {
   }
 
   function fieldClass(name: FieldName) {
-    return `${inputBase} ${errors[name] ? "border-red-700" : "border-slate-400"}`;
+    return `${inputBase} ${errors[name] ? "border-brand" : "border-ink/60"}`;
   }
 
   function errorText(name: FieldName) {
     if (!errors[name]) return null;
     return (
-      <p id={`error-${name}`} className="mt-1 text-sm font-medium text-red-700">
+      <p id={`error-${name}`} className="mt-1 text-sm font-medium text-brand">
         {errors[name]}
       </p>
     );
@@ -132,16 +132,16 @@ export default function ContactForm() {
       noValidate
       onSubmit={onSubmit}
       aria-labelledby="form-judul"
-      className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-8"
+      className="rounded-lg border border-ink/10 bg-white p-5 shadow-sm sm:p-8"
     >
-      <h3 id="form-judul" className="text-xl font-semibold text-navy">
+      <h3 id="form-judul" className="text-xl font-semibold text-ink">
         Formulir kebutuhan proyek
       </h3>
-      <p className="mt-1 text-sm text-slate-700">Semua kolom wajib diisi.</p>
+      <p className="mt-1 text-sm text-ink/80">Semua kolom wajib diisi.</p>
 
       <div aria-live="polite">
         {submitted && errorCount > 0 && (
-          <div className="mt-4 rounded-md border border-red-700 bg-red-50 p-4 text-sm text-red-800" role="alert">
+          <div className="mt-4 rounded-md border border-brand bg-brand-light p-4 text-sm text-brand-dark" role="alert">
             Ada {errorCount} kolom yang perlu Anda perbaiki sebelum mengirim.
           </div>
         )}
@@ -152,16 +152,16 @@ export default function ContactForm() {
           ref={summaryRef}
           tabIndex={-1}
           role="status"
-          className="mt-4 rounded-md border border-navy bg-navy-50 p-4 text-sm text-slate-800"
+          className="mt-4 rounded-md border border-ink/20 bg-surface p-4 text-sm text-ink"
         >
           Aplikasi email Anda seharusnya sudah terbuka dengan pesan yang tersusun. Tekan kirim di aplikasi tersebut. Jika
-          tidak ada yang terbuka, kirim pesan Anda secara manual ke <strong className="text-navy">{SITE.email}</strong>.
+          tidak ada yang terbuka, kirim pesan Anda secara manual ke <strong className="text-ink">{SITE.email}</strong>.
         </div>
       )}
 
       <div className="mt-6 grid gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="field-nama" className="font-medium text-slate-800">
+          <label htmlFor="field-nama" className="font-medium text-ink">
             Nama
           </label>
           <input
@@ -179,7 +179,7 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="field-instansi" className="font-medium text-slate-800">
+          <label htmlFor="field-instansi" className="font-medium text-ink">
             Instansi / Perusahaan
           </label>
           <input
@@ -197,7 +197,7 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="field-email" className="font-medium text-slate-800">
+          <label htmlFor="field-email" className="font-medium text-ink">
             Email
           </label>
           <input
@@ -216,7 +216,7 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="field-telepon" className="font-medium text-slate-800">
+          <label htmlFor="field-telepon" className="font-medium text-ink">
             Nomor telepon
           </label>
           <input
@@ -236,7 +236,7 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="field-kebutuhan" className="font-medium text-slate-800">
+          <label htmlFor="field-kebutuhan" className="font-medium text-ink">
             Kebutuhan
           </label>
           <select
@@ -259,7 +259,7 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="field-lokasi" className="font-medium text-slate-800">
+          <label htmlFor="field-lokasi" className="font-medium text-ink">
             Lokasi
           </label>
           <select
@@ -278,14 +278,14 @@ export default function ContactForm() {
               </option>
             ))}
           </select>
-          <p id="hint-lokasi" className="mt-1 text-sm text-slate-600">
+          <p id="hint-lokasi" className="mt-1 text-sm text-ink/70">
             Layanan onsite tersedia di Jabodetabek.
           </p>
           {errorText("lokasi")}
         </div>
 
         <div className="sm:col-span-2">
-          <label htmlFor="field-pesan" className="font-medium text-slate-800">
+          <label htmlFor="field-pesan" className="font-medium text-ink">
             Pesan
           </label>
           <textarea
@@ -298,7 +298,7 @@ export default function ContactForm() {
             aria-describedby={describedBy("pesan", true)}
             className={fieldClass("pesan")}
           />
-          <p id="hint-pesan" className="mt-1 text-sm text-slate-600">
+          <p id="hint-pesan" className="mt-1 text-sm text-ink/70">
             Ceritakan kondisi saat ini dan hasil yang Anda harapkan.
           </p>
           {errorText("pesan")}
@@ -308,8 +308,8 @@ export default function ContactForm() {
       <button type="submit" className="btn-primary mt-6 w-full sm:w-auto">
         Kirim Kebutuhan Proyek
       </button>
-      <p className="mt-3 text-sm text-slate-600">
-        Tombol ini membuka aplikasi email Anda. Alamat tujuan: <span className="font-semibold text-navy">{SITE.email}</span>
+      <p className="mt-3 text-sm text-ink/70">
+        Tombol ini membuka aplikasi email Anda. Alamat tujuan: <span className="font-semibold text-ink">{SITE.email}</span>
       </p>
     </form>
   );
