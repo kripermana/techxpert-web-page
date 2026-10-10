@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Memberi ruang untuk navbar sticky saat melompat ke anchor */
+    scroll-padding-top: 5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-white text-slate-800 antialiased;
+  }
+
+  /* Fokus keyboard yang selalu terlihat: navy di latar terang, aksen di latar gelap */
+  :focus-visible {
+    outline: 3px solid #0b2545;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .on-dark :focus-visible {
+    outline-color: #f4b942;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-content px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md px-5 py-2.5 text-base font-semibold transition-colors;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-navy hover:bg-accent-600;
+  }
+
+  .btn-outline-light {
+    @apply btn border-2 border-white/80 text-white hover:bg-white hover:text-navy;
+  }
+
+  .btn-navy {
+    @apply btn bg-navy text-white hover:bg-navy-700;
+  }
+
+  .eyebrow {
+    @apply text-sm font-semibold uppercase tracking-wider text-navy-600;
+  }
+
+  .placeholder-tag {
+    @apply inline-block rounded border border-dashed border-slate-400 bg-slate-50 px-2 py-1 text-sm font-medium text-slate-700;
+  }
+}
