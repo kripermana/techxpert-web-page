@@ -1,12 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  images: {
-    // Placeholder memakai SVG lokal. Hapus baris ini jika semua gambar sudah berupa foto JPG/PNG/WebP.
-    dangerouslyAllowSVG: true,
-    contentDispositionType: "attachment",
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-  },
+  output: "export",              // hasil build berupa HTML/CSS/JS di folder out/
+  images: { unoptimized: true }, // optimasi gambar butuh server Node, jadi dimatikan
+  trailingSlash: true,  
 };
 
 export default nextConfig;
