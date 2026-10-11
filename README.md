@@ -11,7 +11,7 @@ npm run build      # build produksi
 npm run typecheck  # cek TypeScript
 ```
 
-`npm run build` menghasilkan situs statis di folder `out/`. Panduan deploy ke server Linux dengan Nginx ada di [DEPLOY.md](DEPLOY.md).
+`npm run build` menghasilkan situs statis di folder `out/`. Deploy ke server dengan `npm run deploy`. Panduan lengkapnya ada di [DEPLOY.md](DEPLOY.md).
 
 Atur `NEXT_PUBLIC_SITE_URL` (misalnya `https://techxpert.dev`) saat build agar URL Open Graph benar.
 
@@ -36,9 +36,10 @@ components/
   Footer.tsx, CopyrightYear.tsx, Icons.tsx
 deploy/
   nginx.conf            Contoh konfigurasi Nginx
-  rollback.sh           Kembali ke rilis sebelumnya di server
 .github/workflows/
-  deploy.yml            Build dan deploy otomatis setiap push ke main
+  ci.yml                Cek typecheck dan build setiap push (tanpa akses server)
+scripts/
+  deploy.mjs            npm run deploy: build, upload via SSH, rollback
 lib/content.ts          Seluruh teks, data layanan, FAQ, dan placeholder
 public/images/          Blok warna netral pengganti foto/logo
 ```
