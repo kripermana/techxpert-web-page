@@ -11,7 +11,9 @@ npm run build      # build produksi
 npm run typecheck  # cek TypeScript
 ```
 
-Atur `NEXT_PUBLIC_SITE_URL` (misalnya `https://techxpert.dev`) saat deploy agar URL Open Graph benar.
+`npm run build` menghasilkan situs statis di folder `out/`. Panduan deploy ke server Linux dengan Nginx ada di [DEPLOY.md](DEPLOY.md).
+
+Atur `NEXT_PUBLIC_SITE_URL` (misalnya `https://techxpert.dev`) saat build agar URL Open Graph benar.
 
 ## Struktur
 
@@ -20,8 +22,7 @@ app/
   layout.tsx            Metadata SEO, font Plus Jakarta Sans, lang="id", skip link
   page.tsx              Menyusun semua section
   globals.css           Tailwind + gaya fokus dan tombol
-  opengraph-image.tsx   Gambar Open Graph yang dibuat otomatis
-  icon.svg              Favicon
+  icon.svg, apple-icon.png  Favicon dan ikon aplikasi
 components/
   Navbar.tsx            Navigasi + menu mobile (client)
   Hero.tsx
@@ -33,6 +34,11 @@ components/
   Contact.tsx           CTA penutup + email teks
   ContactForm.tsx       Form dengan validasi, membuka mailto (client)
   Footer.tsx, CopyrightYear.tsx, Icons.tsx
+deploy/
+  nginx.conf            Contoh konfigurasi Nginx
+  rollback.sh           Kembali ke rilis sebelumnya di server
+.github/workflows/
+  deploy.yml            Build dan deploy otomatis setiap push ke main
 lib/content.ts          Seluruh teks, data layanan, FAQ, dan placeholder
 public/images/          Blok warna netral pengganti foto/logo
 ```

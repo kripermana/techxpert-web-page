@@ -1,0 +1,70 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Satu deploy dalam satu waktu. Deploy yang sedang berjalan tidak dibatalkan.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+      KEEP_RELEASES: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build static site
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL }}
+
+      - name: Set up SSH
+        run: |
+          install -m 700 -d ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          cat > ~/.ssh/config <<CONFIG
+          Host deploy-target
+            HostName ${{ secrets.SSH_HOST }}
+            User ${{ secrets.SSH_USER }}
+            Port ${{ secrets.SSH_PORT || 22 }}
+            IdentityFile ~/.ssh/deploy_key
+            IdentitiesOnly yes
+          CONFIG
+
+      - name: Upload release
+        run: |
+          RELEASE=$(date -u +%Y%m%d%H%M%S)-${GITHUB_SHA::7}
+          echo "RELEASE=$RELEASE" >> "$GITHUB_ENV"
+          ssh deploy-target "mkdir -p '$DEPLOY_PATH/releases/$RELEASE'"
+          # --link-dest memakai file rilis aktif sebagai basis, jadi file yang tidak berubah tidak diupload ulang.
+          rsync -az --delete \
+            --link-dest="$DEPLOY_PATH/current/" \
+            out/ "deploy-target:$DEPLOY_PATH/releases/$RELEASE/"
+
+      - name: Activate release
+        run: |
+          ssh deploy-target "set -e
+            cd '$DEPLOY_PATH'
+            ln -sfn 'releases/$RELEASE' current.tmp
+            mv -Tf current.tmp current
+            ls -1dt releases/*/ | tail -n +$((KEEP_RELEASES + 1)) | xargs -r rm -rf
+            echo 'Aktif:' \$(readlink current)"
