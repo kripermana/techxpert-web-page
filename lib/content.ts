@@ -5,7 +5,7 @@ export const SITE = {
   tagline: "Sinergi Teknologi Expert",
   email: "inquiry@techxpert.dev",
   // [ALAMAT BELUM LENGKAP] Ganti bagian dalam kurung siku dengan data asli.
-  address: "Jalan Matraman Jaya [NOMOR], Kelurahan [KELURAHAN], Jakarta Timur [KODE POS]",
+  address: "Jalan Matraman Jaya, Jakarta Pusat, DKI Jakarta",
   // [URL SITUS] Ganti lewat environment variable NEXT_PUBLIC_SITE_URL saat deploy.
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://techxpert.dev",
 };
